@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>人瑞懷舊輔療</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="華山基金會 人瑞長輩 懷舊輔療・認知促進課程 網頁簡報｜愛迪樂 鍾孟修 職能治療師">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap">
+<style>
+/* Layout: 1600×900 舞台等比縮放；深色/淺灰兩種頁面交錯（參考 Refine Lab 的編號區塊、超大字、橘色點綴） */
+:root{
+  --ink:#16171B;      /* 深色頁底 */
+  --ink-2:#232429;    /* 深色頁卡片 */
+  --paper:#E7E7E7;    /* 淺灰頁底 */
+  --paper-2:#F6F6F4;  /* 淺灰頁卡片 */
+  --orange:#FE5A00;   /* 唯一強調色 */
+  --mute-d:#9A9BA1;   /* 深色頁次要字 */
+  --mute-l:#62636A;   /* 淺色頁次要字 */
+  --line-d:#3A3B41;
+  --line-l:#C9C9C9;
+  --display:"Space Grotesk","Noto Sans TC",system-ui,sans-serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;background:#0c0c0e;color:var(--paper);font-family:var(--body);overflow:hidden;
+  padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+#viewport{position:fixed;inset:0;overflow:hidden}
+#stage{width:1600px;height:900px;position:absolute;left:50%;top:50%;transform-origin:center center}
+.slide{position:absolute;inset:0;padding:72px 96px 96px;box-sizing:border-box;display:none;flex-direction:column;overflow:hidden}
+.slide.on{display:flex;animation:in .45s ease both}
+@keyframes in{from{transform:translateY(14px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+.dark{background:var(--ink);color:var(--paper)}
+.light{background:var(--paper);color:var(--ink)}
+
+/* 共用元素 */
+.top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--display);font-size:22px;letter-spacing:.08em;text-transform:uppercase}
+.dark .top{color:var(--mute-d)} .light .top{color:var(--mute-l)}
+.top b{color:var(--orange);font-weight:700}
+.num{font-family:var(--display);font-weight:700;color:var(--orange);font-size:30px;letter-spacing:.04em}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:900;letter-spacing:.01em}
+h2{font-size:84px;line-height:1.1}
+h3{font-size:40px;line-height:1.25}
+p{margin:0}
+.lead{font-size:34px;line-height:1.55;max-width:30em}
+.dark .lead{color:#C9CACE}.light .lead{color:#3D3E44}
+.hl{color:var(--orange)}
+.grow{flex:1;min-height:0}
+.row{display:flex;gap:40px}
+.col{display:flex;flex-direction:column;gap:24px;min-width:0}
+.pill{display:inline-flex;align-items:center;gap:10px;border:2px solid currentColor;border-radius:999px;padding:8px 22px;font-size:24px;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--orange);color:#fff;text-decoration:none;font-weight:900;font-size:32px;padding:20px 40px;border-radius:999px;transition:transform .2s}
+.btn:hover,.btn:focus-visible{transform:translateX(6px);outline:none}
+.btn .arr{font-family:var(--display)}
+.btn.ghost{background:transparent;border:3px solid var(--orange);color:var(--orange)}
+
+/* 封面 */
+.cover h1{font-size:150px;line-height:1.02;letter-spacing:-.01em}
+.cover h1 span{display:block}
+.cover .meta{display:grid;grid-template-columns:repeat(3,auto);gap:16px 64px;justify-content:start;font-size:28px}
+.cover .meta dt{font-family:var(--display);font-size:20px;letter-spacing:.12em;color:var(--mute-d);text-transform:uppercase}
+.cover .meta dd{margin:4px 0 0;font-weight:700}
+.marquee{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line-d);overflow:hidden;height:64px;display:flex;align-items:center}
+.marquee div{display:flex;gap:56px;white-space:nowrap;animation:mq 38s linear infinite;font-family:var(--display);font-size:24px;color:var(--mute-d);letter-spacing:.1em}
+.marquee i{font-style:normal;color:var(--orange)}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee div{animation:none}}
+
+/* 流程表 */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);border-top:2px solid var(--ink)}
+.flow>div{padding:26px 22px 0 0;border-right:1px solid var(--line-l);display:flex;flex-direction:column;gap:12px;min-width:0}
+.flow>div:last-child{border-right:0}
+.flow .t{font-family:var(--display);font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+.flow .n{font-size:31px;font-weight:900;line-height:1.2}
+.flow .d{font-size:22px;line-height:1.5;color:var(--mute-l)}
+.flow .min{font-family:var(--display);font-size:64px;font-weight:700;color:var(--orange);line-height:1}
+.flow .min small{font-size:22px;color:var(--mute-l);margin-left:4px}
+.flow .add{font-size:18px;font-weight:700;color:var(--orange);border:1.5px solid var(--orange);border-radius:999px;padding:2px 12px;align-self:flex-start}
+
+/* 原則卡 */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--ink-2);border-radius:6px;padding:30px 32px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.light .card{background:var(--paper-2)}
+.card .k{font-family:var(--display);color:var(--orange);font-size:24px;font-weight:700}
+.card h3{font-size:34px}
+.card p{font-size:24px;line-height:1.55;color:var(--mute-d)}
+.light .card p{color:var(--mute-l)}
+
+/* 日期 */
+.today{font-size:150px;font-weight:900;line-height:1.05;font-variant-numeric:tabular-nums}
+.today small{display:block;font-size:44px;font-weight:700;color:var(--mute-l);margin-top:16px}
+.qlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.qlist li{font-size:36px;font-weight:700;padding:20px 0;border-bottom:1px solid var(--line-l);display:flex;gap:24px;align-items:baseline}
+.dark .qlist li{border-color:var(--line-d)}
+.qlist li em{font-style:normal;font-family:var(--display);color:var(--orange);font-size:26px;min-width:44px}
+
+/* 段落封面 */
+.seg{justify-content:space-between}
+.seg .big{font-family:var(--display);font-size:300px;line-height:.8;font-weight:700;color:var(--orange);letter-spacing:-.04em}
+.seg h2{font-size:120px}
+.seg .sub{font-size:36px;color:var(--mute-d);margin-top:20px}
+.seg .bar{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+
+/* 遊戲頁 */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid currentColor}
+.steps div{padding:22px 24px 0 0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.steps b{font-family:var(--display);color:var(--orange);font-size:24px}
+.steps span{font-size:30px;font-weight:900;line-height:1.3}
+.steps small{font-size:22px;line-height:1.5;color:var(--mute-l)}
+.dark .steps small{color:var(--mute-d)}
+.tags{display:flex;flex-wrap:wrap;gap:14px}
+.tag{font-size:28px;font-weight:700;padding:10px 24px;border-radius:999px;background:var(--paper-2);color:var(--ink)}
+.dark .tag{background:var(--ink-2);color:var(--paper)}
+.tag i{font-style:normal;color:var(--orange);font-size:22px;margin-left:8px}
+.note{font-size:24px;line-height:1.6;border-left:4px solid var(--orange);padding-left:20px}
+.dark .note{color:#C9CACE}.light .note{color:#3D3E44}
+
+/* 歌單 */
+.songs{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.song{display:grid;grid-template-columns:110px 1fr;gap:4px 20px;padding:18px 0;border-bottom:1px solid var(--line-d);align-items:baseline}
+.song .y{font-family:var(--display);color:var(--orange);font-size:30px;font-weight:700;grid-row:span 2}
+.song .s{font-size:34px;font-weight:900}
+.song .s small{font-size:22px;font-weight:500;color:var(--mute-d);margin-left:10px}
+.song .q{font-size:24px;color:#C9CACE}
+
+/* 台語名對照 */
+.names{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.name{background:var(--paper-2);padding:24px;border-radius:6px;display:flex;flex-direction:column;gap:6px}
+.dark .name{background:var(--ink-2)}
+.name .zh{font-size:24px;color:var(--mute-l)} .dark .name .zh{color:var(--mute-d)}
+.name .tw{font-size:40px;font-weight:900}
+.name .act{font-size:22px;color:var(--orange);font-weight:700}
+
+/* 動作頁 */
+.moves{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.move{border-top:2px solid var(--orange);padding-top:20px;display:flex;flex-direction:column;gap:10px}
+.move .c{font-family:var(--display);font-size:72px;font-weight:700;line-height:1}
+.move h3{font-size:38px}
+.move p{font-size:26px;line-height:1.5;color:#C9CACE}
+
+/* 回想 */
+.recall{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.recall .card{min-height:300px;justify-content:space-between;cursor:pointer;border:0;text-align:left;font:inherit;color:inherit}
+.recall .card:focus-visible{outline:3px solid var(--orange)}
+.recall .q{font-size:36px;font-weight:900;line-height:1.3}
+.recall .a{font-size:26px;color:var(--orange);font-weight:700;visibility:hidden}
+.recall .card.show .a{visibility:visible}
+.recall .tip{font-size:20px;color:var(--mute-d)}
+
+/* 補充清單 */
+.adds{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.adds div{padding:20px 0;border-bottom:1px solid var(--line-l);display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:baseline}
+.adds b{font-size:22px;color:var(--orange);font-family:var(--display);letter-spacing:.06em}
+.adds span{font-size:26px;line-height:1.5}
+.adds span strong{font-weight:900}
+
+/* 控制列 */
+#hud{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  color:#9A9BA1;font-family:var(--display);font-size:14px;z-index:5;pointer-events:none}
+#hud>*{pointer-events:auto}
+#hud button{background:rgba(22,23,27,.75);color:#E7E7E7;border:1px solid #3A3B41;border-radius:999px;padding:8px 16px;font:inherit;font-size:15px;cursor:pointer}
+#hud button:focus-visible{outline:2px solid var(--orange)}
+#prog{flex:1;height:3px;background:rgba(154,155,161,.35);border-radius:3px;overflow:hidden}
+#prog i{display:block;height:100%;background:var(--orange);width:0;transition:width .3s}
+#count,#clock{font-variant-numeric:tabular-nums;background:rgba(22,23,27,.75);padding:7px 12px;border-radius:999px;color:#E7E7E7}
+</style>
+</head>
+<body>
+
+
+<div id="viewport"><div id="stage">
+
+<!-- 1 封面 -->
+<section class="slide dark cover">
+  <div class="top"><span>Huashan Foundation × <b>Adlers</b></span><span>2026.11.12 THU</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:48px">
+    <div class="pill" style="color:var(--orange);align-self:flex-start">認知促進課程・懷舊輔療</div>
+    <h1><span>聽歌・看景</span><span>認鳥・找蟲</span></h1>
+    <p class="lead">陪人瑞長輩，從一首老歌出發，走一趟記憶裡的台灣。</p>
+    <dl class="meta">
+      <div><dt>Date</dt><dd>11/12（四）09:30–10:30</dd></div>
+      <div><dt>Place</dt><dd>台北市中正區林森北路 9 巷 5 號 1 樓</dd></div>
+      <div><dt>Facilitator</dt><dd>愛迪樂 鍾孟修 職能治療師</dd></div>
+    </dl>
+  </div>
+  <div class="marquee"><div>
+    <span>綠島小夜曲 <i>●</i></span><span>日月潭 <i>●</i></span><span>白頭翁 <i>●</i></span><span>火金姑 <i>●</i></span><span>黃昏的故鄉 <i>●</i></span><span>阿里山 <i>●</i></span><span>白鷺鷥 <i>●</i></span><span>田嬰 <i>●</i></span><span>安平追想曲 <i>●</i></span><span>龍山寺 <i>●</i></span><span>粟鳥仔 <i>●</i></span><span>杜猴 <i>●</i></span>
+    <span>綠島小夜曲 <i>●</i></span><span>日月潭 <i>●</i></span><span>白頭翁 <i>●</i></span><span>火金姑 <i>●</i></span><span>黃昏的故鄉 <i>●</i></span><span>阿里山 <i>●</i></span><span>白鷺鷥 <i>●</i></span><span>田嬰 <i>●</i></span><span>安平追想曲 <i>●</i></span><span>龍山寺 <i>●</i></span><span>粟鳥仔 <i>●</i></span><span>杜猴 <i>●</i></span>
+  </div></div>
+</section>
+
+<!-- 2 流程 -->
+<section class="slide light">
+  <div class="top"><span><b>Program</b> 今日流程</span><span>60 min</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:56px">
+    <h2>六段，<span class="hl">每段都有一個動作、一個話題</span></h2>
+    <div class="flow">
+      <div><span class="t">09:30</span><span class="min">5<small>分</small></span><span class="n">問好・今天幾號</span><span class="d">叫名字問好、日期天氣、手指暖身</span><span class="add">補充</span></div>
+      <div><span class="t">09:35</span><span class="min">12<small>分</small></span><span class="n">金曲猜歌</span><span class="d">聽前奏喊歌名，答案揭曉一起唱</span></div>
+      <div><span class="t">09:47</span><span class="min">12<small>分</small></span><span class="n">馬賽克猜景點</span><span class="d">格子慢慢翻開，聊去過哪裡</span></div>
+      <div><span class="t">09:59</span><span class="min">10<small>分</small></span><span class="n">猜鳥朋友</span><span class="d">看特徵、學叫聲、拍翅膀</span></div>
+      <div><span class="t">10:09</span><span class="min">10<small>分</small></span><span class="n">猜昆蟲朋友</span><span class="d">火金姑、杜猴，聊小時候</span></div>
+      <div><span class="t">10:19</span><span class="min">11<small>分</small></span><span class="n">回想・合唱</span><span class="d">今天去了哪裡？唱一首再見</span><span class="add">補充</span></div>
+    </div>
+    <p class="note">每段之間放 1 分鐘「坐著動一動」（拍手、拍翅、手指爬），讓身體醒著，也提醒大家換題目了。</p>
+  </div>
+</section>
+
+<!-- 3 帶領原則 -->
+<section class="slide dark">
+  <div class="top"><span><b>Guide</b> 帶人瑞長輩的六個原則</span><span>給帶領者・志工</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:40px">
+    <h2>慢一點、近一點、<span class="hl">每個答案都算數</span></h2>
+    <div class="grid3">
+      <div class="card"><span class="k">聽</span><h3>蹲低、面對面說</h3><p>聲音放低沉、放慢，不用大吼。重要的字重複兩次，搭配手勢。</p></div>
+      <div class="card"><span class="k">看</span><h3>投影放大、拿到眼前</h3><p>坐後排或視力差的長輩，志工拿 A4 圖卡走到面前給他看。</p></div>
+      <div class="card"><span class="k">叫</span><h3>先叫名字再提問</h3><p>點名比問「大家知不知道」有效。用長輩習慣的稱呼，阿公、阿嬤、老師。</p></div>
+      <div class="card"><span class="k">等</span><h3>等 10 秒再給提示</h3><p>人瑞想得慢但想得到。先等，再給第一個字、再給選項。</p></div>
+      <div class="card"><span class="k">接</span><h3>答錯也接得住</h3><p>「這個也很像喔！」不糾正，把話題接回他說的經驗。</p></div>
+      <div class="card"><span class="k">歇</span><h3>看臉色調節奏</h3><p>打瞌睡、皺眉、想上廁所就停一下。少玩幾題沒關係。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 開場：今天幾號 -->
+<section class="slide light">
+  <div class="top"><span><b>00</b> 問好・現實導向</span><span>09:30 · 5 min</span></div>
+  <div class="grow row" style="align-items:center;gap:80px">
+    <div class="col" style="flex:1.1">
+      <p class="pill" style="align-self:flex-start;color:var(--orange)">先問，再翻給大家看</p>
+      <p class="today" id="today">11 月 12 日<small>星期四・立冬過後，天氣轉涼</small></p>
+    </div>
+    <ul class="qlist" style="flex:1">
+      <li><em>Q1</em>今天是幾月幾號？星期幾？</li>
+      <li><em>Q2</em>現在是早上還是下午？吃過早餐了嗎？</li>
+      <li><em>Q3</em>外面天氣怎麼樣？要多穿一件嗎？</li>
+      <li><em>Q4</em>這個季節，以前家裡都在忙什麼？</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5 手指暖身 -->
+<section class="slide dark">
+  <div class="top"><span><b>00</b> 手指暖身</span><span>坐著做 · 每個 4 拍 × 2</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:56px">
+    <h2>先把手叫醒，<span class="hl">等一下要拍手、搶答</span></h2>
+    <div class="moves">
+      <div class="move"><span class="c">01</span><h3>拍手打招呼</h3><p>拍手 4 下，再跟旁邊的人揮揮手說「早安」。</p></div>
+      <div class="move"><span class="c">02</span><h3>握拳・張開</h3><p>用力握緊數 1、2，張開數 3、4。手指張到最大。</p></div>
+      <div class="move"><span class="c">03</span><h3>數手指 1 到 5</h3><p>大拇指開始一根一根伸出來，大家一起大聲數。</p></div>
+    </div>
+    <p class="note">手不方便的長輩，只做能做的部分，或由志工輕輕握著一起動。</p>
+  </div>
+</section>
+
+<!-- 6 段落封面：金曲 -->
+<section class="slide dark seg">
+  <div class="top"><span><b>01</b> 破冰</span><span>09:35 · 12 min</span></div>
+  <div>
+    <div class="big">01</div>
+    <h2>金曲猜歌</h2>
+    <p class="sub">聽前奏喊歌名，猜到了就一起唱。</p>
+  </div>
+  <div class="bar">
+    <div class="tags"><span class="tag">台語金曲 1950s</span><span class="tag">國語・台語 1960s</span><span class="tag">鄧麗君特輯</span></div>
+    <a class="btn" href="https://mattsue1003.github.io/pop-song-guess/" target="_blank" rel="noopener">開啟金曲猜歌 <span class="arr">↗</span></a>
+  </div>
+</section>
+
+<!-- 7 金曲帶法＋歌單 -->
+<section class="slide dark">
+  <div class="top"><span><b>01</b> 金曲猜歌・建議歌單</span><span>選「50 年代」或「60 年代」組</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:40px">
+    <div class="steps">
+      <div><b>STEP 1</b><span>播前奏 15 秒</span><small>音量開大，靠近聽力差的長輩</small></div>
+      <div><b>STEP 2</b><span>大家自由喊</span><small>哼得出來也算，不一定要說歌名</small></div>
+      <div><b>STEP 3</b><span>猜不到給提示</span><small>先給歌手、再給第一句歌詞</small></div>
+      <div><b>STEP 4</b><span>公布、一起唱</span><small>唱完問一題「聊聊」</small></div>
+    </div>
+    <div class="songs">
+      <div class="song"><span class="y">1954</span><span class="s">綠島小夜曲<small>紫薇</small></span><span class="q">你會唱的第一首國語老歌是哪一首？</span></div>
+      <div class="song"><span class="y">1951</span><span class="s">安平追想曲<small>許石</small></span><span class="q">你去過台南安平嗎？印象最深的是什麼？</span></div>
+      <div class="song"><span class="y">1959</span><span class="s">孤女的願望<small>陳芬蘭</small></span><span class="q">你的第一份工作是在哪裡？</span></div>
+      <div class="song"><span class="y">1959</span><span class="s">黃昏的故鄉<small>文夏</small></span><span class="q">你離家最遠的一次是去哪裡？</span></div>
+      <div class="song"><span class="y">1962</span><span class="s">寶島曼波<small>洪一峰</small></span><span class="q">你會跳什麼舞？</span></div>
+      <div class="song"><span class="y">1963</span><span class="s">意難忘<small>美黛</small></span><span class="q">哪一首歌會讓你一聽就想流淚？</span></div>
+    </div>
+    <p class="note">人瑞長輩多在日治時期長大：氣氛冷的時候，改放<a href="https://mattsue1003.github.io/japan-old-music-guess/" target="_blank" rel="noopener" style="color:var(--orange)">日本演歌猜歌 ↗</a>，常常一開口就會跟著唱。</p>
+  </div>
+</section>
+
+<!-- 8 轉場動作 -->
+<section class="slide light">
+  <div class="top"><span><b>↺</b> 坐著動一動</span><span>1 min</span></div>
+  <div class="grow row" style="align-items:center;gap:80px">
+    <h2 style="flex:1;font-size:110px">跟著節拍<br><span class="hl">拍手・拍腿</span></h2>
+    <ul class="qlist" style="flex:1">
+      <li><em>1</em>拍手兩下，拍腿兩下</li>
+      <li><em>2</em>左手拍右肩，右手拍左肩</li>
+      <li><em>3</em>雙手舉高搖一搖，說「出發囉！」</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 9 段落封面：景點 -->
+<section class="slide dark seg">
+  <div class="top"><span><b>02</b> 記憶旅行</span><span>09:47 · 12 min</span></div>
+  <div>
+    <div class="big">02</div>
+    <h2>馬賽克猜景點</h2>
+    <p class="sub">格子一格一格翻開，誰先認出是哪裡？</p>
+  </div>
+  <div class="bar">
+    <div class="tags"><span class="tag">20 個台灣景點</span><span class="tag">也可上傳老照片</span></div>
+    <a class="btn" href="https://mattsue1003.github.io/mosaic-animation/" target="_blank" rel="noopener">開啟馬賽克猜景點 <span class="arr">↗</span></a>
+  </div>
+</section>
+
+<!-- 10 景點帶法 -->
+<section class="slide light">
+  <div class="top"><span><b>02</b> 馬賽克猜景點・設定與提問</span><span>建議：大格、完整呈現 15 秒</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:44px">
+    <div class="row" style="gap:64px">
+      <div class="col" style="flex:1">
+        <h3>先挑長輩<span class="hl">年輕時就有</span>的景點</h3>
+        <div class="tags">
+          <span class="tag">艋舺龍山寺</span><span class="tag">日月潭</span><span class="tag">阿里山</span><span class="tag">赤崁樓</span><span class="tag">安平古堡</span><span class="tag">淡水紅毛城</span><span class="tag">鵝鑾鼻燈塔</span><span class="tag">九份老街</span>
+        </div>
+        <p class="note">台北 101、高雄 85 大樓留到最後當「現代題」，對照「以前那裡是什麼」。</p>
+      </div>
+      <ul class="qlist" style="flex:1">
+        <li><em>Q</em>你去過這裡嗎？跟誰去的？</li>
+        <li><em>Q</em>那時候怎麼去？坐火車、客運還是遊覽車？</li>
+        <li><em>Q</em>是畢業旅行、蜜月，還是帶孩子去玩？</li>
+        <li><em>Q</em>那裡有什麼好吃的？</li>
+      </ul>
+    </div>
+    <div class="steps">
+      <div><b>STEP 1</b><span>按開始</span><small>格子慢慢翻開，先自由喊</small></div>
+      <div><b>STEP 2</b><span>按提示</span><small>出現四個選項，可用手指選</small></div>
+      <div><b>STEP 3</b><span>公布答案</span><small>全圖翻開，大家拍手</small></div>
+      <div><b>STEP 4</b><span>問一題</span><small>讓去過的長輩說故事</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 段落封面：鳥 -->
+<section class="slide dark seg">
+  <div class="top"><span><b>03</b> 自然觀察</span><span>09:59 · 10 min</span></div>
+  <div>
+    <div class="big">03</div>
+    <h2>台灣鳥朋友</h2>
+    <p class="sub">看羽毛、認特徵，猜猜牠是誰。</p>
+  </div>
+  <div class="bar">
+    <div class="tags"><span class="tag">20 種常見鳥</span><span class="tag">三選一／自由猜</span><span class="tag">A4 圖卡 PDF</span></div>
+    <a class="btn" href="https://mattsue1003.github.io/guess-bird/" target="_blank" rel="noopener">開啟猜鳥 <span class="arr">↗</span></a>
+  </div>
+</section>
+
+<!-- 12 鳥：台語名與動作 -->
+<section class="slide light">
+  <div class="top"><span><b>03</b> 猜鳥・用老名字叫牠</span><span>建議用「三選一」，長輩可用手指</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:44px">
+    <h2 style="font-size:72px">先挑長輩<span class="hl">在庄腳天天看到</span>的</h2>
+    <div class="names">
+      <div class="name"><span class="zh">麻雀</span><span class="tw">粟鳥仔</span><span class="act">手指啄米 ×4</span></div>
+      <div class="name"><span class="zh">白頭翁</span><span class="tw">白頭殼仔</span><span class="act">學叫「巧克力」</span></div>
+      <div class="name"><span class="zh">小白鷺</span><span class="tw">白鴒鷥</span><span class="act">單手當長脖子</span></div>
+      <div class="name"><span class="zh">家燕</span><span class="tw">燕仔</span><span class="act">雙手拍翅膀</span></div>
+      <div class="name"><span class="zh">珠頸斑鳩</span><span class="tw">斑甲</span><span class="act">一起「咕咕咕」</span></div>
+      <div class="name"><span class="zh">綠繡眼</span><span class="tw">青笛仔</span><span class="act">圈手指當白眼圈</span></div>
+      <div class="name"><span class="zh">台灣藍鵲</span><span class="tw">長尾山娘</span><span class="act">手臂拉長尾巴</span></div>
+      <div class="name"><span class="zh">翠鳥</span><span class="tw">釣魚翁</span><span class="act">手往下一衝</span></div>
+    </div>
+    <p class="note">提問：家裡屋簷有沒有燕子築巢？以前田裡最常看到哪種鳥？　唱一段童謠〈白鷺鷥〉也很好接。</p>
+  </div>
+</section>
+
+<!-- 13 轉場 -->
+<section class="slide dark">
+  <div class="top"><span><b>↺</b> 坐著動一動</span><span>1 min</span></div>
+  <div class="grow row" style="align-items:center;gap:80px">
+    <h2 style="flex:1;font-size:110px">小鳥飛走，<br><span class="hl">小蟲爬來</span></h2>
+    <ul class="qlist" style="flex:1">
+      <li><em>1</em>雙手當翅膀，慢慢拍 8 下</li>
+      <li><em>2</em>手指當小蟲，從手背爬到肩膀</li>
+      <li><em>3</em>換另一手，再爬一次</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 14 段落封面：昆蟲 -->
+<section class="slide dark seg">
+  <div class="top"><span><b>04</b> 童年回憶</span><span>10:09 · 10 min</span></div>
+  <div>
+    <div class="big">04</div>
+    <h2>台灣昆蟲朋友</h2>
+    <p class="sub">看觸角、認翅膀，小時候抓過哪一隻？</p>
+  </div>
+  <div class="bar">
+    <div class="tags"><span class="tag">20 種生活昆蟲</span><span class="tag">三選一／自由猜</span><span class="tag">A4 圖卡 PDF</span></div>
+    <a class="btn" href="https://mattsue1003.github.io/bug-guess/" target="_blank" rel="noopener">開啟猜昆蟲 <span class="arr">↗</span></a>
+  </div>
+</section>
+
+<!-- 15 昆蟲：老名字與童年 -->
+<section class="slide light">
+  <div class="top"><span><b>04</b> 猜昆蟲・小時候的玩伴</span><span>每題問一句「你抓過嗎？」</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:44px">
+    <div class="names">
+      <div class="name"><span class="zh">螢火蟲</span><span class="tw">火金姑</span><span class="act">手掌一開一合閃光</span></div>
+      <div class="name"><span class="zh">螻蛄</span><span class="tw">杜猴</span><span class="act">聊「灌杜猴」</span></div>
+      <div class="name"><span class="zh">蜻蜓</span><span class="tw">田嬰</span><span class="act">雙手平舉滑翔</span></div>
+      <div class="name"><span class="zh">蟬</span><span class="tw">蟬仔</span><span class="act">一起「唧——」</span></div>
+      <div class="name"><span class="zh">蝴蝶</span><span class="tw">尾蝶仔</span><span class="act">拇指勾起來拍拍</span></div>
+      <div class="name"><span class="zh">螳螂</span><span class="tw">草猴</span><span class="act">雙手舉起當鐮刀</span></div>
+      <div class="name"><span class="zh">蝗蟲</span><span class="tw">草蜢仔</span><span class="act">雙手在腿上跳一跳</span></div>
+      <div class="name"><span class="zh">蜜蜂</span><span class="tw">蜂仔</span><span class="act">一起「嗡嗡嗡」</span></div>
+    </div>
+    <ul class="qlist">
+      <li><em>Q</em>小時候在田裡、水溝邊抓過什麼蟲？用什麼裝？</li>
+      <li><em>Q</em>夏天晚上有沒有看過整片的火金姑？</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 16 回想 -->
+<section class="slide dark">
+  <div class="top"><span><b>05</b> 回想・今天去了哪裡</span><span>10:19 · 點卡片看答案</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:48px">
+    <h2>我們今天<span class="hl">一起做了什麼？</span></h2>
+    <div class="recall">
+      <button class="card" type="button" id="rc1"><span class="k num">01</span><span class="q">第一首聽到的歌是什麼？</span><span class="a">看今天的金曲紀錄</span><span class="tip">點一下看答案</span></button>
+      <button class="card" type="button" id="rc2"><span class="k num">02</span><span class="q">格子翻開後，我們去了哪些地方？</span><span class="a">日月潭、龍山寺、阿里山……</span><span class="tip">點一下看答案</span></button>
+      <button class="card" type="button" id="rc3"><span class="k num">03</span><span class="q">頭頂白白的那隻鳥叫什麼？</span><span class="a">白頭翁（白頭殼仔）</span><span class="tip">點一下看答案</span></button>
+      <button class="card" type="button" id="rc4"><span class="k num">04</span><span class="q">晚上會發光的蟲，台語怎麼說？</span><span class="a">火金姑</span><span class="tip">點一下看答案</span></button>
+    </div>
+    <p class="note">第一張的答案依現場播的歌回答。答不出來就給選項，最後請每位長輩說一個「今天最喜歡的」。</p>
+  </div>
+</section>
+
+<!-- 17 結尾 -->
+<section class="slide light cover">
+  <div class="top"><span><b>06</b> 合唱・說再見</span><span>10:25</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:40px">
+    <h1 style="font-size:140px"><span>今天謝謝大家，</span><span class="hl">我們下次見！</span></h1>
+    <p class="lead">挑一首今天大家唱最大聲的歌再唱一次，一邊唱一邊跟旁邊的人握手。</p>
+    <p style="font-size:28px;font-weight:700">愛迪樂健康促進團隊　鍾孟修 職能治療師</p>
+  </div>
+</section>
+
+<!-- 18 補充建議 -->
+<section class="slide light">
+  <div class="top"><span><b>Notes</b> 幫你補上的部分</span><span>給講師看，上課可跳過</span></div>
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:36px">
+    <h2 style="font-size:64px">四個教案之外，<span class="hl">我建議補這些</span></h2>
+    <div class="adds">
+      <div><b>開場</b><span><strong>現實導向＋手指暖身</strong>：日期、天氣、季節，是認知促進課的固定起點。</span></div>
+      <div><b>轉場</b><span><strong>每段 1 分鐘坐姿動作</strong>：拍手拍腿、拍翅膀、手指爬，避免一直坐著看螢幕。</span></div>
+      <div><b>老名字</b><span><strong>台語名稱對照</strong>：粟鳥仔、白鴒鷥、火金姑、杜猴，比國語名更容易喚起記憶。</span></div>
+      <div><b>收尾</b><span><strong>回想四題＋合唱</strong>：短期記憶練習，再用一首歌好好結束。</span></div>
+      <div><b>實體道具</b><span><strong>先印好鳥、昆蟲的 A4 圖卡</strong>（網頁內「玩法與下載」），志工拿到長輩面前看。</span></div>
+      <div><b>備案</b><span><strong>日本演歌猜歌</strong>、<a href="https://mattsue1003.github.io/oldpicguess/" target="_blank" rel="noopener" style="color:var(--orange)">看照片猜資深藝人 ↗</a>：人瑞多在日治時期長大，冷場時很好用。</span></div>
+      <div><b>志工分工</b><span>一位操作電腦、一至兩位走動陪答，坐在聽力、視力較弱的長輩旁邊。</span></div>
+      <div><b>場地</b><span>先測投影與喇叭音量；金曲需要網路，網頁內有「本機音樂」可替代。</span></div>
+    </div>
+  </div>
+</section>
+
+</div></div>
+
+<div id="hud">
+  <button type="button" id="prev" aria-label="上一頁">←</button>
+  <button type="button" id="next" aria-label="下一頁">→</button>
+  <span id="count">1 / 18</span>
+  <div id="prog"><i></i></div>
+  <span id="clock">--:--</span>
+  <button type="button" id="fs">全螢幕</button>
+</div>
+
+<script>
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const stage=document.getElementById('stage');
+  let i=0;
+  function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform='translate(-50%,-50%) scale('+s+')';}
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+    document.querySelector('#prog i').style.width=((i+1)/slides.length*100)+'%';
+    try{history.replaceState(null,'','#s'+(i+1))}catch(e){}
+  }
+  addEventListener('resize',fit);fit();
+  const m=/^#s(\d+)$/.exec(location.hash);show(m?+m[1]-1:0);
+  addEventListener('keydown',e=>{
+    if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)&&!e.target.closest('a,button')){e.preventDefault();show(i+1)}
+    else if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();show(i+1)}
+    else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  });
+  document.getElementById('prev').onclick=()=>show(i-1);
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.getElementById('viewport').addEventListener('click',e=>{
+    if(e.target.closest('a,button'))return;
+    show(e.clientX<innerWidth*0.25?i-1:i+1);
+  });
+  let tx=null;
+  addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+  addEventListener('touchend',e=>{if(tx==null)return;const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)show(d<0?i+1:i-1);tx=null});
+  document.getElementById('fs').onclick=()=>{
+    const d=document.documentElement;
+    if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+    else if(d.requestFullscreen)d.requestFullscreen().catch(()=>{});
+  };
+  document.querySelectorAll('.recall .card').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('show')));
+  // 時鐘與今天日期
+  const W='日一二三四五六';
+  function tick(){
+    const d=new Date();
+    document.getElementById('clock').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+  }
+  tick();setInterval(tick,15000);
+  const d=new Date();
+  if(!(d.getMonth()===10&&d.getDate()===12)){
+    document.getElementById('today').innerHTML=(d.getMonth()+1)+' 月 '+d.getDate()+' 日<small>星期'+W[d.getDay()]+'</small>';
+  }
+})();
+</script>
+
+</body>
+</html>
